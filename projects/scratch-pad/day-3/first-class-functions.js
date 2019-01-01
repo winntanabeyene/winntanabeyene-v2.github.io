@@ -13,8 +13,7 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
+    return value => value > base;
     
     
     // YOUR CODE ABOVE HERE //
@@ -28,7 +27,7 @@ function createGreaterThanFilter(base) {
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
     
-    
+    return value => base > value;
     
     
     // YOUR CODE ABOVE HERE //
@@ -41,8 +40,8 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
+ 
+    return string => startsWith.toLowerCase() === string[0].toLowerCase();
     
     
     // YOUR CODE ABOVE HERE //
@@ -56,7 +55,7 @@ function createStartsWithFilter(startsWith) {
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
     
-    
+    return string => string[string.length-1].toLowerCase() === endsWith.toLowerCase();
     
     
     // YOUR CODE ABOVE HERE //
@@ -71,8 +70,11 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
-    
+   let newArr = [];
+ for(var i = 0; i < strings.length; i++){
+     newArr.push(modify(strings[i]));
+ }
+ return newArr;
     
     
     // YOUR CODE ABOVE HERE //
@@ -89,6 +91,14 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
+    
+    for(var i = 0; i < strings.length; i++){
+       let newStr = test(strings[i]);
+        if(newStr === false){
+            return false;
+        }
+    }
+    return true;
     
     
     
